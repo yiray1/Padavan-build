@@ -18,10 +18,10 @@ on:
   watch:
     types: [started]
   #workflow_dispatch:
-env:                      # 环境变量
-  MHZ: 1100               # CPU超频频率 必须为20的倍数。开启超频请修改124行超频选项
-  TNAME: R2100           # 配置文件名  https://github.com/hanwckf/rt-n56u/tree/master/trunk/configs/templates
-  BUILD_VERSION: chongshengB  # hanwckf 或者 chongshengB
+env:                      
+  MHZ: 1100               
+  TNAME: R2100           
+  BUILD_VERSION: chongshengB  
 
 jobs:
   build:
@@ -146,7 +146,7 @@ jobs:
           echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNS=n" >> configs/templates/$TNAME.config    #smartdns
           echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNSBIN=n" >> configs/templates/$TNAME.config #smartdns二进制文件
           # 特别注意，开启v2同样需要开启113行的shadowsocks，否则不会编译
-          echo "CONFIG_FIRMWARE_INCLUDE_V2RAY=y" >> configs/templates/$TNAME.config       #集成v2ray执行文件（3.8M左右)，如果不集成，会从网上下载下来执行，不影响正常使用
+          echo "CONFIG_FIRMWARE_INCLUDE_V2RAY=n" >> configs/templates/$TNAME.config       #集成v2ray执行文件（3.8M左右)，如果不集成，会从网上下载下来执行，不影响正常使用
           echo "CONFIG_FIRMWARE_INCLUDE_TROJAN=n" >> configs/templates/$TNAME.config      #集成trojan执行文件(1.1M左右)，如果不集成，会从网上下载下来执行，不影响正常使用
           echo "CONFIG_FIRMWARE_INCLUDE_KOOLPROXY=n" >> configs/templates/$TNAME.config   #KP广告过滤
           echo "CONFIG_FIRMWARE_INCLUDE_CADDY=n" >> configs/templates/$TNAME.config       #在线文件管理服务
